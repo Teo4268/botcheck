@@ -62,7 +62,24 @@ async def main():
     logging.info("🚀 Bot Telegram đang chạy! Đang gửi cập nhật mỗi 10s...")
     await send_mining_status()
 
-if __name__ == "__main__":
+
+from fastapi import FastAPI
+import uvicorn
+import threading
+
+app = FastAPI()
+
+@app.get("/")
+def health_check():
+    return {"status": "running"}
+
+# Chạy bot Telegram trên luồng riêng
+def run_bot():
     import nest_asyncio
     nest_asyncio.apply()
     asyncio.run(main())
+
+threading.Thread(target=run_bot, daemon=True).start()
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8080)
