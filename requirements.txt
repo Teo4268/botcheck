@@ -1,3 +1,5 @@
 requests
 python-telegram-bot
 nest_asyncio
+fastapi
+uvicorn 
