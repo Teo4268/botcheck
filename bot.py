@@ -59,7 +59,7 @@ async def send_mining_status():
             logging.error(f"Lỗi khi lấy dữ liệu mining: {e}")
             await bot.send_message(CHAT_ID, "❌ Lỗi khi lấy dữ liệu từ Zpool.")
 
-        await asyncio.sleep(10)  # Đợi 10 giây trước khi gửi tiếp
+        await asyncio.sleep(60)  # Đợi 10 giây trước khi gửi tiếp
 
 async def main():
     logging.info("🚀 Bot Telegram đang chạy! Đang gửi cập nhật mỗi 10s...")
